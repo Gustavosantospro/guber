@@ -1,10 +1,15 @@
 package gustavosantospro.guber.guber.domain;
 
+import gustavosantospro.guber.guber.domain.data.TravelRequestStatus;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class TravelRequest {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,10 +19,7 @@ public class TravelRequest {
 
     @ManyToOne
     private Passenger passenger;
-
-    public TravelRequest(Passenger passenger, String origin, String destination) {
-        this.passenger = passenger;
-        this.origin = origin;
-        this.destination = destination;
-    }
+    @Enumerated(EnumType.STRING)
+    private TravelRequestStatus status;
+    private Date creationalDate;
 }
