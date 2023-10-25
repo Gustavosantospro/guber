@@ -65,6 +65,7 @@ public class TravelRequestMapper  {
                                                              TravelRequest travelRequest) {
 
         Link passagerLink = WebMvcLinkBuilder.linkTo(PassengerController.class)
+                .slash(travelRequest.getPassenger().getId())
                 .withRel("passenger")
                 .withTitle(travelRequest.getPassenger().getName());
         travelRequestOutput.add(passagerLink);
